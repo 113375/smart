@@ -1,0 +1,35 @@
+.navigation {
+    display: flex;
+    background-color: #AAA;
+}
+
+
+/* TODO доделать стили верхней части с вкладками, продумать дизайн самой страницы */
+
+.tabs__content {
+    margin-top: var(--navbar-height);
+    padding-right: 60px;
+    padding-left: 60px;
+    width: 100%;
+}
+
+.tab {
+    display: none;
+    border-bottom: 0 solid sienna;
+}
+
+.tab.is-active {
+    display: block;
+}
+
+.tabs-nav__item.is-active {
+    background-color: var(--light-red);
+    border-radius: 10px;
+    color: white;
+}
+
+.tabs-nav__item {
+    cursor: pointer;
+    transition: .4s ease-in-out;
+    padding: 2px;
+}

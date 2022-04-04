@@ -37,5 +37,5 @@ $stmt->execute();
 $row = $stmt->fetch();
 echo json_encode(["status" => $status, "lamp" => $row["status"]]);
 
-
+?>
 
