@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 04, 2022 at 02:01 PM
+-- Generation Time: Apr 05, 2022 at 06:08 PM
 -- Server version: 5.7.30
 -- PHP Version: 7.4.9
 
@@ -13,6 +13,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `smart`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `card`
+--
+
+CREATE TABLE `card` (
+  `id` int(5) NOT NULL,
+  `person_id` int(5) NOT NULL,
+  `card_id` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `card`
+--
+
+INSERT INTO `card` (`id`, `person_id`, `card_id`) VALUES
+(1, 1, '123'),
+(2, 1, '444');
 
 -- --------------------------------------------------------
 
@@ -31,7 +51,11 @@ CREATE TABLE `hystory` (
 --
 
 INSERT INTO `hystory` (`person_id`, `data`, `time`) VALUES
-(1, '2022-04-04', '16:51:05');
+(1, '2022-04-04', '16:51:05'),
+(1, '2022-04-04', '18:44:10'),
+(1, '2022-04-04', '18:54:28'),
+(1, '2022-04-04', '19:46:42'),
+(1, '2022-04-04', '20:04:47');
 
 -- --------------------------------------------------------
 
@@ -59,17 +83,16 @@ INSERT INTO `lamp` (`status`, `date`, `time`) VALUES
 --
 
 CREATE TABLE `person` (
-  `id` int(5) NOT NULL,
-  `name` varchar(500) NOT NULL,
-  `card_id` varchar(1000) NOT NULL
+  `person_id` int(5) NOT NULL,
+  `name` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `person`
 --
 
-INSERT INTO `person` (`id`, `name`, `card_id`) VALUES
-(1, 'Дима', '123');
+INSERT INTO `person` (`person_id`, `name`) VALUES
+(1, 'Дима');
 
 -- --------------------------------------------------------
 
@@ -90,17 +113,29 @@ CREATE TABLE `sensors` (
 --
 
 --
+-- Indexes for table `card`
+--
+ALTER TABLE `card`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `person`
 --
 ALTER TABLE `person`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`person_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `card`
+--
+ALTER TABLE `card`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `person`
 --
 ALTER TABLE `person`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `person_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
