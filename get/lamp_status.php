@@ -5,20 +5,21 @@ include "../dataBase.php";
 date_default_timezone_set('Europe/Moscow');
 
 
-function updateLamp($name, $pdo){
+function check_lamp($pdo){
     try{
-    
-        $query = "INSERT INTO person(name) VALUES (:name)";
+        
+        $query = "SELECT * from lamp";
         $stmt = $pdo->prepare($query);
-        $stmt->bindParam(":name",$name);
+   
         $stmt->execute();
-    }catch(PDOException $e){
+        $stat = $stmt->fetchAll();
+        return $stat;
+       }catch(PDOException $e){
         echo $e;
     }
 }
 
 
 $data = json_decode(file_get_contents("php://input"));
-//data = {"name": "name"}
-updateLamp($data->name, $pdo);
-echo json_encode(["status" => "ok"]);
+$res = check_lamp($pdo);
+echo json_encode(["status" => $res[sizeof($res) - 1]["status"]]);
