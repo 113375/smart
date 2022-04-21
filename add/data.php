@@ -3,14 +3,13 @@ include "../dataBase.php";
 date_default_timezone_set('Europe/Moscow');
 
 
-function addData($t, $b, $g, $pdo){
+function addData($t, $b, $pdo){
     try{
         
-        $query = "INSERT INTO sensors(temperature, barometer, gas, time, date) VALUES (:t, :b, :g, :time, :date)";
+        $query = "INSERT INTO sensors(temperature, barometer,  time, date) VALUES (:t, :b,  :time, :date)";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(":t",$t);
         $stmt->bindParam(":b",$b);
-        $stmt->bindParam(":g",$g);
         $stmt->bindParam(":time", date("H:i:s"));
         $stmt->bindParam(":date", date('Y-m-d'));
         $stmt->execute();
@@ -22,20 +21,16 @@ function addData($t, $b, $g, $pdo){
 }
 
 $t = $_GET["temp"]; 
-$b = $_GET["bar"];
-$g = $_GET["gas"];
-if( $t and $b and $g){
-    addData($t, $b, $g, $pdo);
+$b = $_GET["bar"];  
+if( $t and $b ){
+    addData($t, $b, $pdo);
     $status = "ok";
 }else{
     $status = "fail";
 }
 
-$query = "SELECT * FROM lamp";
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-$row = $stmt->fetch();
-echo json_encode(["status" => $status, "lamp" => $row["status"]]);
+
+echo json_encode(["status" => $status]);
 
 ?>
 
