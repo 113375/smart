@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-
+<?php include "dataBase.php";?>
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -18,20 +18,17 @@
   <div class="container">
 
     <div class="tabs__content">
-      <div class="tab " block-content-name="profile_page">
+      <div class="tab is-active" block-content-name="profile_page">
 
-        Профили
-        <!-- TODO доделать раздел  с профилями, добавить создание новых профилей -->
+      <?php include "parts/moduls.php" ?>
 
       </div>
-      <div class="tab is-active" block-content-name="lamp-page">
-        <!-- TODO доделать раздел  с лампочкой -->
+      <div class="tab " block-content-name="lamp-page">
         <?php include "parts/lamp.php" ?>
-      </div>
+      </div>  
 
       <div class="tab" block-content-name="history_page">
-        История проходов
-        <!-- TODO Выводить историю проходов по замку -->
+              <?php include "parts/hystory_block.php" ?>
       </div>
     </div>
   </div>
